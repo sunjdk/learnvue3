@@ -3,7 +3,7 @@ export default function(app){
   app.directive("format-time",{
     mounted(el,bindings){
       let formatString=bindings.value;
-      console.log(formatString);
+      // console.log(formatString);
       if(!formatString){
         formatString="YYYY-MM-DD HH:mm:ss"
       }

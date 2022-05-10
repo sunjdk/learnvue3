@@ -1,20 +1,24 @@
 <template>
-  <date-picker :value="date" format="MMM D YYYY" :options="{firstDay:2}"></date-picker>
+<div>
+  <DatePicker :value="now"></DatePicker>
+</div>
 </template>
+
 <script>
-import Pikaday from 'pikaday'
-import DatePicker from './views/DatePicker.vue';
-import '/node_modules/pikaday/css/pikaday.css'
+import { defineComponent } from 'vue';
+import DatePicker from './components/date-picker.vue';
+
 export default{
-	components: { DatePicker },
+    components: { DatePicker },
     data(){
-      return {
-        // date:'2022-05-10'
-        date:'May 10 2022'
+      return{
+        now:new Date()
       }
     }
 }
 </script>
-<style scoped>
 
+<style lang="stylus">
+div
+  background red
 </style>
