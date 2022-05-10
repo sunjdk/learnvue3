@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input type="text" :value="value" @blur="blur" @focus="focus">
+  <div v-click-outside>
+    <input type="text" :value="value">
     <div class="pannel" v-if="isVisible">
       <div class="pannel-nav">
         <span @click="prevYear">&lt;</span>
@@ -39,26 +39,28 @@
 import * as common from '../utils/common'
 export default {
   directives:{
-    // clickOutside:{
-    //   mounted(el,bindings,vnode){
-    //     console.log('vnode',vnode);
-    //     let handler=(e)=>{
-    //       console.log(e.target);
-    //       if(el.contains(e.target)){
-    //         this.isVisible=true
-    //       }else{
-    //         this.isVisible=false
-    //       }
-    //     }
-    //     el.handler=handler;
-    //     //把事件绑定给document
-    //     document.addEventListener('click',handler)
-    //   },
-      
-    //   unmounted(el){
-    //     document.removeEventListener('click',el.handler)
-    //   }
-    // }
+    clickOutside:{
+      bind(el,bindings,vnode){
+        let handler=(e)=>{
+          if(el.contains(e.target)){
+            if(!vnode.contains.isVisible){
+              vnode.context.focus();
+              console.log('focus');
+            }
+          }else{
+            if(vnode.contains.isVisible){
+              vnode.context.blur();
+              console.log('blur');
+            }
+          }
+        }
+        el.handler=handler;
+        document.addEventListener('click',handler)
+      },
+      unbind(el){
+        document.removeEventListener('click',el.handler)
+      }
+    }
   },
   data(){
     let {year,month}=common.getYearMonthDay(this.value)
