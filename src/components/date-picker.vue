@@ -1,6 +1,6 @@
 <template>
   <div v-click-outside>
-    <input type="text" :value="value">
+    <input type="text" :value="value" @blur="blur" @focus="focus">
     <div class="pannel" v-if="isVisible">
       <div class="pannel-nav">
         <span @click="prevYear">&lt;</span>
