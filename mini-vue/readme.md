@@ -12,3 +12,6 @@
 口功能一:h函数，用于返回一个VNode对象;
 口功能二: mount函数，用于将VNode挂载到DOM上;
 口功能三: patch函数，用于对两个VNode进行对比，决定如何处理新的VNode ;
+
+
+test.html 是完整的测试入口
