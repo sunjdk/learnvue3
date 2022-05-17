@@ -1,8 +1,9 @@
 import { createRouter,createWebHistory } from 'vue-router'
 const routes = [
   {path:'/',name:"Home",component:()=>import('../views/Home.vue')},
-  { path: '/watch', name: 'Watch',component:()=>import('../views/watch.vue') },
-  { path: '/render', name:'Render', component:()=>import('../views/render.vue') },
+  // { path: '/watch', name: 'Watch',component:()=>import('../views/watch.vue') },
+  // { path: '/render', name:'Render', component:()=>import('../views/render.vue') },
+  { path:'/:catchAll(.*)', name:'/404',component:()=>import('../views/404.vue')}
 ]
 
 const router = createRouter({
