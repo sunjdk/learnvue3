@@ -1,11 +1,15 @@
 import { createStore } from "vuex";
+import getters from "./getters";
+import app from "./modules/app";
+import settings from "./modules/settings";
+
 
 const store=createStore({
   modules:{
-    app,
-    settings
+    app:app,
+    settings:settings
   },
-  getters
+  getters:getters
 })
 
 export default store
