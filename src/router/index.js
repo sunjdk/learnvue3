@@ -1,8 +1,11 @@
 import { createRouter,createWebHistory } from 'vue-router'
 const routes = [
   {path:'/',name:"Home",component:()=>import('../views/Home.vue')},
-  { path: '/kform', name: 'Kform',component:()=>import('../views/kform.vue') },
-  { path: '/bpmn', name:'Bpmn', component:()=>import('../views/bpmnjs.vue') },
+  { path: '/kform', name: 'Kform',component:()=>import('../views/Kform.vue') },
+  { path: '/bpmn', name:'Bpmnjs', component:()=>import('../views/Bpmnjs.vue') },
+  { path: '/cesium', name:'Cesiumjs', component:()=>import('../views/Cesiumjs.vue') },
+  { path: '/three', name:'Threejs', component:()=>import('../views/Threejs.vue') },
+  { path: '/typescript', name:'Typescript', component:()=>import('../views/Typescript.vue') },
   { path:'/:catchAll(.*)', name:'/404',component:()=>import('../views/404.vue')}
 ]
 

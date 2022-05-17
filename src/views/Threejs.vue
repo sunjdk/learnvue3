@@ -1,5 +1,7 @@
 <template>
-  <div>动态表单</div>
+  <div>
+    threejs
+  </div>
 </template>
 
 <script>

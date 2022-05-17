@@ -1,5 +1,5 @@
 <template>
-  <div>动态表单</div>
+  <div>typescript</div>
 </template>
 
 <script>
