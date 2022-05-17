@@ -1,22 +1,11 @@
 <template>
 <div>
-  <!-- :value="now" @input="val=>value=>val" -->
-  <DatePicker v-model="now"></DatePicker>
+  <router-view></router-view>
 </div>
 </template>
 
-<script>
-import DatePicker from './components/date-picker.vue';
-export default{
-    components: { DatePicker },
-    data(){
-      return{
-        now:new Date("2019-5-18")
-      }
-    }
+<style scoped>
+body,html{
+  margin:0;padding:0;
 }
-</script>
-
-<style lang="stylus">
-
 </style>
