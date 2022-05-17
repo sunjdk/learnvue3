@@ -1,10 +1,10 @@
 <template>
   <div>
-    Home 组件
+    Home 组件-element-plus<el-button>ElButton</el-button>
 
     <ul>
-      <li><router-link to="/render">render</router-link></li>
-      <li><router-link to="/watch">watch</router-link></li>
+      <li><router-link to="/bpmn">流程引擎对接</router-link></li>
+      <li><router-link to="/kform">动态表单</router-link></li>
     </ul>
   </div>
 </template>

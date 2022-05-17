@@ -1,8 +1,8 @@
 import { createRouter,createWebHistory } from 'vue-router'
 const routes = [
   {path:'/',name:"Home",component:()=>import('../views/Home.vue')},
-  // { path: '/watch', name: 'Watch',component:()=>import('../views/watch.vue') },
-  // { path: '/render', name:'Render', component:()=>import('../views/render.vue') },
+  { path: '/kform', name: 'Kform',component:()=>import('../views/kform.vue') },
+  { path: '/bpmn', name:'Bpmn', component:()=>import('../views/bpmnjs.vue') },
   { path:'/:catchAll(.*)', name:'/404',component:()=>import('../views/404.vue')}
 ]
 

@@ -15,10 +15,10 @@
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "cesium": "^1.93.0",
     "dayjs": "^1.11.2",
+    "element-plus": "2.0.1",
     "pikaday": "^1.8.2",
-    "stylus": "^0.57.0",
-    "stylus-loader": "^6.2.0",
     "vite": "^2.9.8",
-    "vite-plugin-cesium": "^1.2.18"
+    "vite-plugin-cesium": "^1.2.18",
+    "vue-router": "^4.0.13"
   }
 }
