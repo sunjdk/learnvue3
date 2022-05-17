@@ -6,6 +6,7 @@ import registerDirectives from './directives'
 import pluginObject from './plugins/plugins_object'
 import pluginFunction from './plugins/plugins_function'
 import router from './router'
+import store from './store'
 import App from './App.vue'
 
 
@@ -17,5 +18,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 app.use(ElementPlus)
 app.use(router)
+app.use(store)
 
 app.mount('#app')

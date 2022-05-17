@@ -10,7 +10,7 @@ const mutations={
 }
 
 const actions={
-  setSize:({commit},size){
+  setSize({commit},size){
     commit('SET_SIZE',size)
   }
 }
