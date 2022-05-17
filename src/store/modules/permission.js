@@ -3,7 +3,7 @@ import { getRouters } from '../../api/menu'
 import Layout from '../../layout/index.vue'
 import ParentView from '../../components/ParentView.vue'
 import InnerLink from '../../layout/components/InnerLink/index.vue'
-
+// console.log(constantRoutes);
 // 匹配views里面所有的.vue文件
 const modules = import.meta.glob('./../../views/**/*.vue')
 

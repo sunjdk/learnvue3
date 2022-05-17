@@ -1,73 +1,75 @@
 <template>
-<div class="app-wrapper">
+<div :class="classObj" class="app-wrapper">
   <div class="graw-bg">
     <el-icon :size="20">
       <Expand />
     </el-icon>
   </div>
+
   <!-- 左侧菜单 -->
-  <div class="siderbar-container">
-    <ul>
-      <li>
-        <router-link to="/">一级菜单1</router-link>
-      </li>
-      <li>
-        <router-link to="/">一级菜单2</router-link>
-      </li>
-      <li>
-        <router-link to="/">一级菜单3</router-link>
-      </li>
-      <li>
-        <router-link to="/">一级菜单4</router-link>
-      </li>
-      <li>
-        <router-link to="/">一级菜单5</router-link>
-      </li>
-      <ul>
-        <li>
-          <router-link to="/">二级菜单1</router-link>
-        </li>
-        <li>
-          <router-link to="/">二级菜单2</router-link>
-        </li>
-        <li>
-          <router-link to="/">二级菜单3</router-link>
-        </li>
-        <li>
-          <router-link to="/">二级菜单4</router-link>
-        </li>
-      </ul>
-    </ul>
-  </div>
+  <sidebar class="sidebar-container" />
   <!-- 页面主区域 -->
-  <div class="main-contain">
-    <!-- 导航区域 -->
-    <navbar @setLayout="setLayout" />
-    <!-- 标签页 -->
-    <tags-view></tags-view>
-    <!-- 页面主区域 -->
-    <app-main></app-main>
-    <!-- 主题设置控件 -->
-    <settings ref="settingRef" />
+  <div :class="{ hasTagsView: needTagsView }" class="main-container">
+      <div :class="{ 'fixed-header': fixedHeader }">
+        <!-- 导航区域 -->
+        <navbar @setLayout="setLayout" />
+        <!-- 标签页 -->
+        <tags-view></tags-view>
+        <!-- 页面主区域 -->
+        <app-main></app-main>
+        <!-- 主题设置控件 -->
+        <settings ref="settingRef" />
+      </div>
   </div>
 </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
-
-
-
-
+import { computed, ref, watchEffect } from "vue"
+import { useWindowSize } from '@vueuse/core'
+import { useStore } from "vuex"
 import AppMain from './components/AppMain.vue'
 import TagsView from './components/TagsView/index.vue'
 import Settings from './components/Settings/set.vue'
+import Sidebar from './components/Sidebar/index.vue'
 import Navbar from "./components/Navbar.vue"
 
 const direction=ref("rtl")
 const drawer = ref(false)
 const size=ref("100")
 const settingRef = ref(null);
+
+const store = useStore();
+const theme = computed(() => store.state.settings.theme);
+const sideTheme = computed(() => store.state.settings.sideTheme);
+const sidebar = computed(() => store.state.app.sidebar);
+const device = computed(() => store.state.app.device);
+const needTagsView = computed(() => store.state.settings.tagsView);
+const fixedHeader = computed(() => store.state.settings.fixedHeader);
+
+const classObj = computed(() => ({
+  hideSidebar: !sidebar.value.opened,
+  openSidebar: sidebar.value.opened,
+  withoutAnimation: sidebar.value.withoutAnimation,
+  mobile: device.value === 'mobile'
+}))
+
+const { width, height } = useWindowSize();
+const WIDTH = 992; // refer to Bootstrap's responsive design
+
+watchEffect(() => {
+  if (device.value === 'mobile' && sidebar.value.opened) {
+    store.dispatch('app/closeSideBar', { withoutAnimation: false })
+  }
+  if (width.value - 1 < WIDTH) {
+    store.dispatch('app/toggleDevice', 'mobile')
+    store.dispatch('app/closeSideBar', { withoutAnimation: true })
+  } else {
+    store.dispatch('app/toggleDevice', 'desktop')
+  }
+})
+
+
 function setLayout() {
   settingRef.value.openSetting();
 }

@@ -1,8 +1,9 @@
 import { createRouter,createWebHistory } from 'vue-router'
 
 import Layout from '../layout/index.vue'
+// 公共路由
 
-const routes = [
+export const constantRoutes = [
   {
       path: '/redirect',
       component: Layout,
@@ -33,13 +34,11 @@ const routes = [
   { path:'/:catchAll(.*)', name:'/404',component:()=>import('../views/404.vue')}
 ]
 
-// 公共路由
-export const constantRoutes = []
 
 const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHistory(),
-  routes, // `routes: routes` 的缩写
+  routes:constantRoutes, // `routes: routes` 的缩写
 })
 
 export default router
