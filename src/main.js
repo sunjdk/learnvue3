@@ -10,6 +10,8 @@ import store from './store'
 import App from './App.vue'
 
 
+import SvgIcon from './components/SvgIcon'
+
 const app=createApp(App)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -17,6 +19,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.use(ElementPlus)
+app.component('svg-icon', SvgIcon)
 app.use(router)
 app.use(store)
 

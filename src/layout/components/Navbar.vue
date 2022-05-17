@@ -1,13 +1,11 @@
 <template>
   <div>
-    导航
+    <top-nav></top-nav>
   </div>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+import TopNav from '../../components/TopNav.vue';
 </script>
 
 <style>

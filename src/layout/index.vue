@@ -42,16 +42,13 @@
   <!-- 页面主区域 -->
   <div class="main-contain">
     <!-- 导航区域 -->
-    <div class="navbar">
-      导航区域
-    </div>
+    <navbar @setLayout="setLayout" />
+    <!-- 标签页 -->
     <tags-view></tags-view>
-    <div class="app-main">
-      <app-main></app-main>
-    </div>
-    <div class="settings">
-      <el-drawer v-model="drawer" :size="size" title="主题设置" :direction="direction" :before-close="handleClose"><span>这是主题设置子组件</span></el-drawer>
-    </div>
+    <!-- 页面主区域 -->
+    <app-main></app-main>
+    <!-- 主题设置控件 -->
+    <settings ref="settingRef" />
   </div>
 </div>
 </template>
@@ -60,23 +57,64 @@
 import { ref } from "vue"
 
 
-import { default as AppMain } from './components/AppMain.vue'
-import { default as TagsView } from './components/TagsView/index.vue'
+
+
+import AppMain from './components/AppMain.vue'
+import TagsView from './components/TagsView/index.vue'
+import Settings from './components/Settings/set.vue'
+import Navbar from "./components/Navbar.vue"
 
 const direction=ref("rtl")
 const drawer = ref(false)
 const size=ref("100")
+const settingRef = ref(null);
+function setLayout() {
+  settingRef.value.openSetting();
+}
 
 function handleClose(){
   drawer.value=false
 }
 </script>
 
+
 <style lang="scss" scoped>
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+
+.app-wrapper {
+
+  position: relative;
+  background-color: #F7F9FC;
+
+  &.mobile.openSidebar {
+    position: fixed;
+    top: 0;
+  }
+}
+
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - 250px);
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+}
+
+.mobile .fixed-header {
+  width: 100%;
 }
 </style>

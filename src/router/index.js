@@ -33,6 +33,9 @@ const routes = [
   { path:'/:catchAll(.*)', name:'/404',component:()=>import('../views/404.vue')}
 ]
 
+// 公共路由
+export const constantRoutes = []
+
 const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHistory(),
