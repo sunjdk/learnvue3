@@ -45,11 +45,9 @@
     <div class="navbar">
       导航区域
     </div>
-    <div class="tag-view">
-      标签页区域
-    </div>
+    <tags-view></tags-view>
     <div class="app-main">
-      
+      <app-main></app-main>
     </div>
     <div class="settings">
       <el-drawer v-model="drawer" :size="size" title="主题设置" :direction="direction" :before-close="handleClose"><span>这是主题设置子组件</span></el-drawer>
@@ -61,6 +59,9 @@
 <script setup>
 import { ref } from "vue"
 
+
+import { default as AppMain } from './components/AppMain.vue'
+import { default as TagsView } from './components/TagsView/index.vue'
 
 const direction=ref("rtl")
 const drawer = ref(false)
