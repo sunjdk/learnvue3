@@ -1,6 +1,30 @@
 import { createRouter,createWebHistory } from 'vue-router'
+
+import Layout from '../layout/index.vue'
+
 const routes = [
-  {path:'/',name:"Home",component:()=>import('../views/Home.vue')},
+  {
+      path: '/redirect',
+      component: Layout,
+      hidden: true,
+      children: [
+          {
+              path: '/redirect/:path(.*)',
+              component:()=>import("../views/redirect/index.vue")
+              // component: () => import('@/views/redirect/index.vue')
+          }
+      ]
+  },
+  { 
+    path:'/',
+    name:"Home",
+    component:Layout,
+    hidden:true,
+    redirect:'/home',
+    children:[
+      {path:'/home',name:'Homeindex',component:()=>import('../views/Home.vue'),meta:{title:'首页',active:true}}
+    ]
+  },
   { path: '/kform', name: 'Kform',component:()=>import('../views/Kform.vue') },
   { path: '/bpmn', name:'Bpmnjs', component:()=>import('../views/Bpmnjs.vue') },
   { path: '/cesium', name:'Cesiumjs', component:()=>import('../views/Cesiumjs.vue') },
