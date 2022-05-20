@@ -15,3 +15,23 @@ class Car implements CarProps{
 }
 
 ```
+
+Pick<Type,Keys>
+
+```typescript
+
+interface Todo{
+  title:string;
+  description:string;
+  completed:boolean;
+}
+
+type TodoPreview=Pick<Todo,"title" | "completed">
+
+const todo:TodoPreview={
+  title:"Clean room",
+  completed:false,
+}
+
+todo;
+```

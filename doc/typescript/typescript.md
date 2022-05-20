@@ -11,3 +11,7 @@ https://www.youtube.com/watch?v=XzrhjDu062o&list=PLQAeuK_iqYCcO1NhqCnl-6PGY-GCt7
 手册：
 
 https://typescript.bootcss.com/variable-declarations.html
+
+国外官方文档：
+
+https://www.typescriptlang.org/docs/
