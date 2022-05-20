@@ -56,6 +56,11 @@ let c:Color=Color.Green;
 enum Color{Red=1,Green,Blue}
 let colorName:string=Color[2];
 
+enum LiveStatus{
+    SUCCESS=0,
+    FAIL=-1,
+    STREAMING=1
+}
 alert(colorName)
 ```
 

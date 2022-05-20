@@ -1,6 +1,3 @@
-```javascript
-
-
 class Live{
   roomName:string
   private id:string
@@ -43,6 +40,5 @@ class Live2{
 
 
 const live2=new Live2('live2')
+console.log(live2.#name);
 
-
-```
