@@ -40,7 +40,9 @@ const permission = {
         GenerateRoutes ({ commit }) {
             return new Promise(resolve => {
                 // 向后端请求路由数据
+                console.log('tesst');
                 getRouters().then(res => {
+                    console.log(111111111);
                     const sdata = JSON.parse(JSON.stringify(res.data))
                     const rdata = JSON.parse(JSON.stringify(res.data))
                     const defaultData = JSON.parse(JSON.stringify(res.data))

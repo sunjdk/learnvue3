@@ -11,13 +11,13 @@
         :active-text-color="theme"
         :collapse-transition="false"
         mode="vertical"
-      >+++
+      >
         <sidebar-item
           v-for="(route, index) in sidebarRouters"
           :key="route.path + index"
           :item="route"
           :base-path="route.path"
-        />***
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -34,6 +34,7 @@ const route = useRoute();
 const store = useStore();
 
 const sidebarRouters =  computed(() => store.getters.sidebarRouters);
+console.log(sidebarRouters.value);
 const showLogo = computed(() => store.state.settings.sidebarLogo);
 const sideTheme = computed(() => store.state.settings.sideTheme);
 const theme = computed(() => store.state.settings.theme);

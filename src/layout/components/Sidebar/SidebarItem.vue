@@ -1,49 +1,20 @@
 <template>
   <div v-if="!item.hidden">
-    <template
-      v-if="
-        hasOneShowingChild(item.children, item) &&
-        (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
-        !item.alwaysShow
-      "
-    >
-      <app-link
-        v-if="onlyOneChild.meta"
-        :to="resolvePath(onlyOneChild.path, onlyOneChild.query)"
-      >
-        <el-menu-item
-          :index="resolvePath(onlyOneChild.path)"
-          :class="{ 'submenu-title-noDropdown': !isNest }"
-        >
-          <svg-icon
-            :icon-class="
-              onlyOneChild.meta.icon || (item.meta && item.meta.icon)
-            "
-          />
+    <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
+      <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path, onlyOneChild.query)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
+          <svg-icon :icon-class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"/>
           <template #title>{{ onlyOneChild.meta.title }}</template>
         </el-menu-item>
       </app-link>
     </template>
 
-    <el-sub-menu
-      v-else
-      ref="subMenu"
-      :index="resolvePath(item.path)"
-      popper-append-to-body
-    >
+    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template v-if="item.meta" #title>
         <svg-icon :icon-class="item.meta && item.meta.icon" />
         <span>{{ item.meta.title }}</span>
       </template>
-
-      <sidebar-item
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-        class="nest-menu"
-      />
+      <sidebar-item v-for="child in item.children" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" class="nest-menu"/>
     </el-sub-menu>
   </div>
 </template>
@@ -53,6 +24,7 @@ import { isExternal } from '../../../utils/validate'
 import AppLink from './Link.vue'
 import { getNormalPath } from '../../../utils/common'
 import { ref } from 'vue'
+import SvgIcon from '../../../components/SvgIcon/index.vue';
 
 const props = defineProps({
   // route object

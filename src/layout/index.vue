@@ -81,6 +81,9 @@ function handleClose(){
 
 
 <style lang="scss" scoped>
+  @import "../assets/style/mixin.scss";
+  @import "../assets/style/variables.module.scss";
+  @import "../assets/style/sidebar.scss";
 
 .app-wrapper {
 
