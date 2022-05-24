@@ -27,6 +27,8 @@ Promise 的一个重要优点是它将逐渐被用作浏览器的异步 API ，�
 4）简单代码实现
 最简单的Promise实现有7个主要属性, state(状态), value(成功返回值), reason(错误信息), resolve方法, reject方法, then方法.
 
+
+```javascript
 class Promise{
   constructor(executor) {
     this.state = 'pending';
@@ -241,3 +243,5 @@ Promise.prototype.then = function(onFulfilled, onRejected) {
     });
   }
 };
+
+```
